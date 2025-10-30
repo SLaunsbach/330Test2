@@ -1,5 +1,5 @@
 
-module rca(input wire A,
+module FA(input wire A,
         input wire B,
         input wire CI,
         output wire S,
