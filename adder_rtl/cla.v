@@ -1,5 +1,5 @@
 
-module cla #(parameter Width = 8) (input [Width-1:0] A,
+module cla #(parameter Width = 64) (input [Width-1:0] A,
         input [Width-1:0] B,
         input wire CI,
         output wire [Width-1:0] S,
@@ -18,9 +18,9 @@ module cla #(parameter Width = 8) (input [Width-1:0] A,
             //k = ((i*4)-4)
            
             claBlock iCLAB(.A(A[((i*4)-1):((i*4)-4)]), .B(B[((i*4)-1):((i*4)-4)]), .CI(Carries[i-1]), .S(S[((i*4)-1):((i*4)-4)]));
-            claLookHead iCLALA(.A(A[((i*4)-1):((i*4)-4)]), .B(B[((i*4)-1):((i*4)-4)]), .CI(Carries[i-1]), .CO(Carries[i]));
+            claLookAhead iCLALA(.A(A[((i*4)-1):((i*4)-4)]), .B(B[((i*4)-1):((i*4)-4)]), .CI(Carries[i-1]), .CO(Carries[i]));
             
 	end
-
+        assign CO = Carries[Width/4];
 
 endmodule
