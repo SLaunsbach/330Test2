@@ -8,7 +8,7 @@ module prefixBlock(input wire PA, //p i:k
 
 
 
-    assign PF = PA & PG;
+    assign PF = PA & PB;
     assign GF = (PA & PB) | (GA);
 
 

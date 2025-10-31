@@ -2,7 +2,7 @@
 module prefixInput(input wire A,
         input wire B,
         output wire P,
-        output wire G,
+        output wire G
 );
 
 
