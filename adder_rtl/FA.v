@@ -6,5 +6,5 @@ module FA(input wire A,
         output wire CO);
 
     	xor iSUM (S, A, B, CI);
-	majority iCO(.V1(A), .V2(B), .V3(CI), .major(CO));
+	assign CO = (A&B) | (CI&B) | (A&CI);
 endmodule
