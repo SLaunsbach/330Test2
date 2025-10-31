@@ -11,12 +11,22 @@ module prefix #(parameter Width = 8) (input [Width-1:0] A,
     	wire [Width-1:0] FinalsG; //Final Generation data for each column
 	
 	//assign propagation/generation carries to logic from first row of white blocks
-        prefixInput iPFs[Width-1:0](.A({A[Width-2:0], 0}), .B({B[Width-2:0], 0}), .P({CarriesP[Width-2:0],1}), .G({CarriesG[Width-2:0], 0}));
+        //prefixInput iPFs[Width-1:0](.A({A[Width-2:0], 0}), .B({B[Width-2:0], 0}), .P({CarriesP[Width-2:0],1}), .G({CarriesG[Width-2:0], 0}));
+genvar i;
+
+        assign CarriesP[0] = 1'b1;
+        assign CarriesG[0] = 1'b0;
+        for (i = 1; i < Width; i = i + 1) begin
+            
+            prefixInput iPFs(.A(A[i-1]), .B(B[i-1]), .P(CarriesP[i]), .G(CarriesG[i]));
+
+
+        end
 
 
         //Vector of black blocks for every other column
 
-        genvar i;
+        
 
         for (i = 1; i < Width; i = i + 2) begin
             

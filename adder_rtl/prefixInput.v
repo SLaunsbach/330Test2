@@ -1,6 +1,6 @@
 
-module prefixInput(input wire A,
-        input wire B,
+module prefixInput(input A,
+        input B,
         output wire P,
         output wire G
 );
